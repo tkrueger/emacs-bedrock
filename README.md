@@ -14,6 +14,12 @@ An *extremely* minimal Emacs starter kit uses just one external package by defau
 
 ## Changelog
 
+ - 1.1.0
+ 
+   2023-09-08
+   
+   Rename "mixins" → "extras", as mixin has the flavor of being some kind of special thingy. "Extra" gets at the purpose of these files.
+
  - 1.0.0
  
    2023-09-04
