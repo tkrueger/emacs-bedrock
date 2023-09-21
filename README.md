@@ -14,6 +14,16 @@ An *extremely* minimal Emacs starter kit uses just one external package by defau
 
 ## Changelog
 
+ - Development
+
+   Change magit keybinding to standard `C-x g`; drop non-standard ones. (Thanks Vincent Conus!)
+
+ - 1.2.0
+
+   2023-09-21
+
+   Add packages [Cape](https://github.com/minad/cape) (+ basic configuration) and wgrep. Add a binding for `consult-ripgrep`.
+
  - 1.1.0
  
    2023-09-08
@@ -58,8 +68,13 @@ An *extremely* minimal Emacs starter kit uses just one external package by defau
 
 ## Authors
 
+Creator and maintainer:
+
  - Ashton Wiersdorf https://lambdaland.org
 
-[^1]: In my humble but correct opinion.
+Contributors:
 
-[^2]: https://karthinks.com/software/avy-can-do-anything/
+ - George Kettleborough
+ - Enzo Do Rosario
+ - Ed Singleton
+ - Vincent Conus
