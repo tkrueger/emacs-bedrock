@@ -2,15 +2,13 @@
 
 Stepping stones to a better Emacs experience
 
-**NOTICE:** This is a placeholder repository for people who like to start things on GitHub. See the [project homepage](https://sr.ht/~ashton314/emacs-bedrock/) for the source.
+**NOTICE:** This is a placeholder repository for people who like to start things on GitHub. See the [project homepage](https://codeberg.org/ashton314/emacs-bedrock) for the source.
 
 ## Synopsis
 
 An *extremely* minimal Emacs starter kit uses just one external package by default, and only GNU-ELPA packages on an opt-in basis. Intended to be copied once and then modified as the user grows in knowledge and power.
 
- - [Project homepage](https://sr.ht/~ashton314/emacs-bedrock/)
- - [Issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock)
- - [Mailing list](https://lists.sr.ht/~ashton314/emacs-bedrock)
+ - [Project homepage](https://codeberg.org/ashton314/emacs-bedrock)
 
 ## Changelog
 
