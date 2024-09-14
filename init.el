@@ -198,9 +198,12 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package emacs
+(use-package solarized-theme
+  :ensure t
+  :init
+  (setq custom-safe-themes t)
   :config
-  (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
+  (load-theme 'solarized-light))          ; for dark theme, use solarized-dark
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -245,6 +248,8 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" default))
  '(package-selected-packages '(which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
