@@ -20,6 +20,7 @@
 ;;;  - Version Control
 ;;;  - Common file types
 ;;;  - Eglot, the built-in LSP client for Emacs
+;;;  - Smartparens, structural editing and auto-parens
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -40,10 +41,7 @@
           (typescript-mode . typescript-ts-mode)
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
-          (python-mode . python-ts-mode)))
-  :hook
-  ;; Auto parenthesis matching
-  ((prog-mode . electric-pair-mode)))
+          (python-mode . python-ts-mode))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -102,3 +100,18 @@
   ; (add-to-list 'eglot-server-programs
   ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
   )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Smartparens, helps with opening and closing parens and provides structural editing.
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package smartparens
+  :ensure smartparens                       ;; install the package
+  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+  :config
+  (require 'smartparens-config)             ;; load default config
+  :bind (("C-<right>" .   'sp-forward-slurp-sexp)
+	 ("C-<left>" .    'sp-forward-barf-sexp)
+	 ("C-<left>" .    'sp-forward-barf-sexp)
+	 ("C-M-<right>" . 'sp-backward-barf-sexp)))
