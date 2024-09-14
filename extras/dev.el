@@ -21,6 +21,7 @@
 ;;;  - Common file types
 ;;;  - Eglot, the built-in LSP client for Emacs
 ;;;  - Smartparens, structural editing and auto-parens
+;;;  - Aggressive-indent, auto-indent while typing
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -130,3 +131,15 @@
 	 ("C-<left>" .    'sp-forward-barf-sexp)
 	 ("C-<left>" .    'sp-forward-barf-sexp)
 	 ("C-M-<right>" . 'sp-backward-barf-sexp)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Aggressive indent, auto-indentation while typing
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package aggressive-indent
+  :ensure t
+  :hook
+  ;; consise mode, enables fn with package name for each ...-hook in the list
+  (emacs-lisp-mode clojure-mode))
