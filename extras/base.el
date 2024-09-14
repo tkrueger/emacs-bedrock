@@ -191,3 +191,9 @@
   :ensure t
   :config
   (setq wgrep-auto-save-buffer t))
+
+;; auto-save current buffers when they lose focus
+(use-package super-save
+  :ensure t
+  :config
+  (super-save-mode +1))
