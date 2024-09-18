@@ -34,6 +34,21 @@
   :bind (("C-c j" . avy-goto-line)
          ("s-j"   . avy-goto-char-timer)))
 
+(use-package emacs
+  :config
+  ;; Preserve the cursor position relative to the screen when scrolling
+  (setq scroll-preserve-screen-position 'always)
+  ;; don't scroll point to mid if we move it out of windows with cursor movement.
+  ;; This scrolls a bit more like you might be used from other editors.
+  ;; Use C-L to scroll point to middle.
+  ;; Use M-n, M-p to scroll view instead of point.
+  (setq scroll-conservatively 5)
+  :bind (;; Scroll buffer under the point
+	 ;; 'scroll-preserve-screen-position' must be set to a non-nil, non-t value for
+	 ;; these to work as intended.
+	 ("M-p" . scroll-down-line)
+	 ("M-n" . scroll-up-line)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Power-ups: Embark and Consult
