@@ -162,6 +162,10 @@ If the new path's directories does not exist, create them."
 (blink-cursor-mode -1)                                ; Steady cursor
 (pixel-scroll-precision-mode)                         ; Smooth scrolling
 
+;; allow resising of windows through the mouse.
+;; find a resizer at the right side of each window.
+(menu-bar-right-window-divider)
+
 ;; Use common keystrokes by default
 (cua-mode)
 
