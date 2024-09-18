@@ -130,7 +130,9 @@
   :bind (("C-<right>" .   'sp-forward-slurp-sexp)
 	 ("C-<left>" .    'sp-forward-barf-sexp)
 	 ("C-<left>" .    'sp-forward-barf-sexp)
-	 ("C-M-<right>" . 'sp-backward-barf-sexp)))
+	 ("C-M-<right>" . 'sp-backward-barf-sexp)
+	 ("C-M-w" .       'sp-copy-sexp)
+	 ("M-r" .         'sp-splice-sexp-killing-around)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
