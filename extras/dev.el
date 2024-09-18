@@ -42,7 +42,11 @@
           (typescript-mode . typescript-ts-mode)
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
-          (python-mode . python-ts-mode))))
+          (python-mode . python-ts-mode)))
+
+  ;; set eldoc buffer to a fixed size to prevent visually jarring resizes
+  (setq eldoc-echo-area-use-multiline-p 1)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
