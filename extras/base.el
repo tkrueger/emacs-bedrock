@@ -102,6 +102,11 @@
 (use-package embark-consult
   :ensure t)
 
+;;; Takes a buffer of search results, lets us edit that buffer, and then
+;;; reflect those changes back into the files from the lines that they came from.
+(use-package wgrep
+  :ensure t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Minibuffer and completion
