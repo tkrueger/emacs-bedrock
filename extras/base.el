@@ -107,6 +107,10 @@
 (use-package wgrep
   :ensure t)
 
+;; Allows to use ripgrep if installed
+(use-package ripgrep
+  :ensure t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Minibuffer and completion
