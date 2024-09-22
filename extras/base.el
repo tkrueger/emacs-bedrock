@@ -111,6 +111,12 @@
 (use-package ripgrep
   :ensure t)
 
+;; Allows to use ag if installed
+(use-package ag
+  :ensure t
+  :config
+  (setq ag-highlight-search t))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Minibuffer and completion
