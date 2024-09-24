@@ -172,7 +172,8 @@ If the new path's directories does not exist, create them."
 ;; Use common keystrokes by default
 (cua-mode)
 
-;; Display line numbers in programming mode
+;; Display line numbers everywhere
+(global-display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setopt display-line-numbers-width 3)           ; Set a minimum width
 
