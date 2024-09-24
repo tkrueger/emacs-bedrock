@@ -22,6 +22,7 @@
 ;;;  - Eglot, the built-in LSP client for Emacs
 ;;;  - Smartparens, structural editing and auto-parens
 ;;;  - Aggressive-indent, auto-indent while typing
+;;;  - Flycheck, generic syntac checker
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -169,3 +170,17 @@
   :hook
   ;; consise mode, enables fn with package name for each ...-hook in the list
   (emacs-lisp-mode clojure-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Flycheck, generic syntax checker
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package flycheck
+  :ensure t
+  :config
+  (setq-default flycheck-disabled-checkers '(yaml-ruby))
+  :init
+  (global-flycheck-mode))
+
