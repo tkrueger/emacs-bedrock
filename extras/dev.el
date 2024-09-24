@@ -36,7 +36,7 @@
   ;; Tell Emacs to prefer the treesitter mode
   ;; You'll want to run the command `M-x treesit-install-language-grammar' before editing.
   (setq major-mode-remap-alist
-        '((yaml-mode . yaml-ts-mode)
+        '((yaml-mode . yaml-pro-ts-mode)
           (bash-mode . bash-ts-mode)
           (js2-mode . js-ts-mode)
           (typescript-mode . typescript-ts-mode)
@@ -68,7 +68,7 @@
 (use-package markdown-mode
   :hook ((markdown-mode . visual-line-mode)))
 
-(use-package yaml-mode
+(use-package yaml-pro
   :ensure t)
 
 (use-package json-mode
