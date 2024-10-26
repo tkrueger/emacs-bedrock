@@ -249,6 +249,9 @@ If the new path's directories does not exist, create them."
 ;; Workarounds
 (load-file (expand-file-name "extras/workarounds.el" user-emacs-directory))
 
+;; Things still on probation
+(load-file (expand-file-name "extras/probation.el" user-emacs-directory))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework
