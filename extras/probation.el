@@ -26,4 +26,19 @@ If point was already at that position, move point to beginning of line."
 (global-set-key "\C-a" 'smart-beginning-of-line)
 
 (provide 'probation.el)
+
+;;;
+;;; Frame Title
+;;;
+
+;; stolen from prelude
+;; more useful frame title, that show either a file or a
+;; buffer name (if the buffer isn't visiting a file)
+(setq frame-title-format
+      '("" invocation-name
+	" Prelude - "
+	(:eval (if (buffer-file-name)
+		   (abbreviate-file-name (buffer-file-name))
+		 "%b"))))
+
 ;;; probation.el ends here
