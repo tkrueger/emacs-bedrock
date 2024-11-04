@@ -22,7 +22,13 @@
 (use-package clojure-mode
   :ensure t
   :config
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+  (setq clojure-toplevel-inside-comment-form t)
+  (add-hook 'before-save-hook 'eglot-format-buffer))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (emacs-lisp-mode clojure-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
