@@ -37,7 +37,7 @@
   ;; Tell Emacs to prefer the treesitter mode
   ;; You'll want to run the command `M-x treesit-install-language-grammar' before editing.
   (setq major-mode-remap-alist
-        '((yaml-mode . yaml-pro-ts-mode)
+        '((yaml-mode . yaml-ts-mode)
           (bash-mode . bash-ts-mode)
           (js2-mode . js-ts-mode)
           (typescript-mode . typescript-ts-mode)
@@ -70,7 +70,8 @@
   :hook ((markdown-mode . visual-line-mode)))
 
 (use-package yaml-pro
-  :ensure t)
+  :ensure t
+  :hook (yaml-ts-mode . yaml-pro-ts-mode))
 
 (use-package json-mode
   :ensure t)
@@ -148,8 +149,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package smartparens
-  :ensure smartparens                       ;; install the package
-  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+  :ensure smartparens                       ;; install the packaage
+  :hook ((prog-mode text-mode markdown-mode) . #'turn-on-smartparens-strict-mode)
   :config
   (require 'smartparens-config)             ;; load default config
   :bind (("C-<right>" .   'sp-forward-slurp-sexp)
