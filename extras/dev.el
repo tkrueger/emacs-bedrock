@@ -30,6 +30,10 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; use binaries installed by asdf and linuxbrew
+(add-to-list 'exec-path "/home/linuxbrew/.linuxbrew/bin")
+(add-to-list 'exec-path (expand-file-name "~/.asdf/shims"))
+
 (use-package emacs
   :config
   ;; Treesitter config
