@@ -23,6 +23,7 @@
 ;;;  - Smartparens, structural editing and auto-parens
 ;;;  - Aggressive-indent, auto-indent while typing
 ;;;  - Flycheck, generic syntac checker
+;;;  - Markdown mode
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -304,4 +305,20 @@
   :config (treemacs-set-scope-type 'Tabs))
 
 (treemacs-start-on-boot)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Markdown mode
+;;;
+;;; DO NOT FORGET ro execute:
+;;; (treesit-install-language-grammar 'markdown)
+;;; (treesit-install-language-grammar 'markdown-inline)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package markdown-ts-mode
+  :mode ("\\.md\\'" . markdown-ts-mode)
+  :defer 't
+  :config
+  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+  (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")))
 
