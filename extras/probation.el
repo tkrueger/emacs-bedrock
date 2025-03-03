@@ -41,6 +41,10 @@ If point was already at that position, move point to beginning of line."
 		   (abbreviate-file-name (buffer-file-name))
 		 "%b"))))
 
+;;;
+;;; Combobulate
+;;;
+
 (use-package combobulate
   :custom
   ;; You can customize Combobulate's key prefix here.
@@ -49,6 +53,7 @@ If point was already at that position, move point to beginning of line."
   :hook ((prog-mode . combobulate-mode))
   ;; Amend this to the directory where you keep Combobulate's source
   ;; code.
-  :load-path ("/home/thor/work/oss/combobulate"))
+  :load-path ("~/dev/combobulate"))
 
 ;;; probation.el ends here
+
