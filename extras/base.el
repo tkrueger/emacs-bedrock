@@ -145,13 +145,17 @@
 ;; Popup completion-at-point
 (use-package corfu
   :ensure t
+  :custom
+  (corfu-quit-at-boundary 'separator)
   :init
   (global-corfu-mode)
+  ;; save completion history for better sorrting
+  (corfu-history-mode)
   :bind
   (:map corfu-map
-        ("SPC" . corfu-insert-separator)
-        ("C-n" . corfu-next)
-        ("C-p" . corfu-previous)))
+	("SPC" . corfu-insert-separator)
+	("C-n" . corfu-next)
+	("C-p" . corfu-previous)))
 
 ;; Part of corfu
 (use-package corfu-popupinfo
