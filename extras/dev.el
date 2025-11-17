@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Commentary:
+;;;
 ;;; Emacs Bedrock
 ;;;
 ;;; Extra config: Development tools
@@ -25,6 +28,8 @@
 ;;;  - Flycheck, generic syntac checker
 ;;;  - Markdown mode
 ;;;  - vterm, fully-fledged terminal emulator based on libvterm, a C library
+
+;;; Code:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -332,3 +337,5 @@
 (use-package vterm
   :ensure t
   :bind (("C-y" . vterm-yank)))
+
+;;; dev.el ends here
