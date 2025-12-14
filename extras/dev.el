@@ -38,7 +38,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; use binaries installed by asdf and linuxbrew
-(add-to-list 'exec-path "/home/linuxbrew/.linuxbrew/bin")
+(cond
+ ((eq system-type 'darwin)
+  (add-to-list 'exec-path "/opt/homebrew/bin"))
+ ((eq system-type 'gnu/linux)
+  (add-to-list 'exec-path "/home/linuxbrew/.linuxbrew/bin"))
+ ((eq system-type 'windows-nt)
+  (message "Running on Windows, not extending exec-path"))
+ (t
+  (message "Unknown system type, not extending exec-path")))
+
 (add-to-list 'exec-path (expand-file-name "~/.asdf/shims"))
 
 (use-package emacs
