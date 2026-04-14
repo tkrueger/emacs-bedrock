@@ -69,6 +69,11 @@
   (setq eldoc-echo-area-use-multiline-p 1)
   )
 
+;; set bash indentation to 2
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (setq sh-basic-offset 2)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Version Control
@@ -86,8 +91,12 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package markdown-mode
-  :hook ((markdown-mode . visual-line-mode)))
+(use-package markdown-ts-mode
+  :mode ("\\.md\\'" . markdown-ts-mode)
+  :defer 't
+  :config
+  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+  (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")))
 
 (use-package yaml-pro
   :ensure t
@@ -146,6 +155,8 @@
   ;; Sometimes you need to tell Eglot where to find the language server
   ;; (add-to-list 'eglot-server-programs
   ;;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
+  (setq-default eglot-workspace-configuration
+		'(:yaml (:format (:enable nil))))
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -220,7 +231,9 @@
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :config
   (progn
-    (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+    (setq treemacs-buffer-name-function            #'treemacs-default-buffer-name
+          treemacs-buffer-name-prefix              " *Treemacs-Buffer-"
+          treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
           treemacs-deferred-git-apply-delay        0.5
           treemacs-directory-name-transformer      #'identity
           treemacs-display-in-side-window          t
@@ -302,6 +315,10 @@
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
 
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
 (use-package treemacs-projectile
   :after (treemacs projectile)
   :ensure t)
@@ -314,7 +331,15 @@
   :after (treemacs magit)
   :ensure t)
 
-(treemacs-start-on-boot)
+(use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  :after (treemacs)
+  :ensure t
+  :config (treemacs-set-scope-type 'Tabs))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
