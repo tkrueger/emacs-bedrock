@@ -29,7 +29,8 @@
 (setq frame-resize-pixelwise t)
 (if (fboundp 'tool-bar-mode)
     (tool-bar-mode -1))                      ; All these tools are in the menu-bar anyway
-(setq default-frame-alist '((fullscreen . maximized)
+(setq default-frame-alist '((width . 200)
+                            (height . 55)
 
                             ;; You can turn off scroll bars by uncommenting these lines:
                             ;; (vertical-scroll-bars . nil)
