@@ -26,6 +26,10 @@
 (when (< emacs-major-version 29)
   (error "Emacs Bedrock only works with Emacs 29 and newer; you have version %s" emacs-major-version))
 
+;; Ensure true color works in terminal frames (daemon may start without COLORTERM)
+(unless (getenv "COLORTERM")
+  (setenv "COLORTERM" "truecolor"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Basic settings
@@ -206,10 +210,15 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; tell emacs about ghostty being able to show true color
+(add-to-list 'term-file-aliases '("xterm-ghostty" . "xterm-256color"))
+
 (use-package solarized-theme
   :ensure t
   :init
   (setq custom-safe-themes t)
+  (setq solarized-use-less-bold t
+        solarized-scale-org-headlines nil)
   :config
   (load-theme 'solarized-light))          ; for dark theme, use solarized-dark
 
