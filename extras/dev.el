@@ -65,6 +65,9 @@
           (css-mode . css-ts-mode)
           (python-mode . python-ts-mode)))
 
+  (setq treesit-extra-load-path
+	(list (expand-file-name "tree-sitter" user-emacs-directory)))
+  
   ;; set eldoc buffer to a fixed size to prevent visually jarring resizes
   (setq eldoc-echo-area-use-multiline-p 1)
   )
@@ -114,7 +117,7 @@
 	(json "https://github.com/tree-sitter/tree-sitter-json")
 	(make "https://github.com/alemuller/tree-sitter-make")
 	(markdown "https://github.com/ikatyang/tree-sitter-markdown")
-	(python "https://github.com/tree-sitter/tree-sitter-python")
+	(python "https://github.com/tree-sitter/tree-sitter-python" "v0.23.6")  ;; older tag, we nee ABI 14 for this emacs
 	(toml "https://github.com/tree-sitter/tree-sitter-toml")
 	(tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
 	(typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
@@ -326,11 +329,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package markdown-ts-mode
+  :ensure t
   :mode ("\\.md\\'" . markdown-ts-mode)
   :defer 't
   :config
-  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
-  (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")))
+  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "v0.4.1" "tree-sitter-markdown/src"))  ;; pinned to ABI 14, matches this emacs
+  (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "v0.4.1" "tree-sitter-markdown-inline/src")))  ;; pinned to ABI 14, matches this emacs
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

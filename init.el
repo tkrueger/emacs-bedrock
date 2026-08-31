@@ -211,7 +211,10 @@ If the new path's directories does not exist, create them."
   :init
   (setq custom-safe-themes t)
   :config
-  (load-theme 'solarized-light))          ; for dark theme, use solarized-dark
+  (load-theme 'solarized-light) ; for dark theme, use solarized-dark
+  ;; set the title bar colors to be more visible
+  (add-to-list 'default-frame-alist '(ns-appearance . light))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -264,8 +267,9 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" default))
- '(package-selected-packages '(aggressive-indent which-key))
+   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3"
+     default))
+ '(package-selected-packages nil)
  '(reb-re-syntax 'string))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

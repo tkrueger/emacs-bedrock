@@ -231,3 +231,7 @@
   :ensure t
   :config
   (super-save-mode +1))
+
+;; Search imenu across all open buffers — useful for finding defmethods,
+;; defs, and other symbols without grepping.
+(keymap-set global-map "C-c i" #'consult-imenu-multi)
