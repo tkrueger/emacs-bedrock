@@ -1,4 +1,4 @@
-;;; probation.el --- A collection of snippets trying to prove their value.
+;;; probation.el --- A collection of snippets trying to prove their value. -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
