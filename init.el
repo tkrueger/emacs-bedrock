@@ -96,8 +96,6 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Show the help buffer after startup
-(add-hook 'after-init-hook 'help-quick)
 
 ;; which-key: shows a popup of available keybindings when typing a long key
 ;; sequence (e.g. C-x ...)
@@ -175,6 +173,10 @@ If the new path's directories does not exist, create them."
 
 ;; Use common keystrokes by default
 (cua-mode)
+;; C-x TAB (the default indent-rigidly binding) is broken under cua-mode when
+;; a region is active because CUA intercepts C-x for cut. Rebind it.
+(keymap-global-unset "C-x TAB")
+(keymap-global-set "C-<tab>" 'indent-rigidly)
 
 ;; Display line numbers everywhere
 (global-display-line-numbers-mode)
@@ -279,17 +281,18 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3"
+   '("0f9a1b7a0f1d09544668297c1f04e5a5452ae1f4cf69f11b125f4cff1d54783d"
+     "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3"
      default))
  '(package-selected-packages
    '(ag aggressive-indent cape company-restclient corfu-terminal eat
-	embark-consult flycheck-clj-kondo http json-mode kaocha-runner
-	kind-icon marginalia markdown-ts-mode mmm-mode mustache-mode
-	orderless org-edit-indirect polymode rainbow-delimiters
-	ripgrep smartparens solarized-theme super-save treemacs-evil
-	treemacs-icons-dired treemacs-magit treemacs-persp
-	treemacs-projectile treemacs-tab-bar vertico vterm wgrep
-	which-key yaml-pro))
+	embark-consult flycheck-clj-kondo forge http json-mode
+	kaocha-runner kind-icon marginalia markdown-ts-mode mmm-mode
+	mustache-mode orderless org-edit-indirect polymode
+	rainbow-delimiters ripgrep smartparens solarized-theme
+	super-save treemacs-evil treemacs-icons-dired treemacs-magit
+	treemacs-persp treemacs-projectile treemacs-tab-bar vertico
+	vterm wgrep which-key yaml-pro))
  '(reb-re-syntax 'string))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
