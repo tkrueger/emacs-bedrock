@@ -16,3 +16,9 @@
 # Machine-local config (e.g. work-only credentials/hosts) that shouldn't
 # sync across machines sharing this repo.
 /extras/*-local.el
+
+# Runtime/session caches
+/forge-database.sqlite
+/savefile/
+/url/
+/session.*
