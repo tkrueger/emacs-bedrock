@@ -1,4 +1,4 @@
-;;; Extra config: Clojure Development tools
+;;; Extra config: Clojure Development tools -*- lexical-binding: t; -*-
 
 ;;; Usage: Append or require this file from init.el for some software
 ;;; development-focused packages.

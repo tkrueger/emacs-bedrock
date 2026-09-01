@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;;;  ________                                                _______                 __                            __
 ;;; /        |                                              /       \               /  |                          /  |
 ;;; $$$$$$$$/ _____  ____   ______   _______  _______       $$$$$$$  | ______   ____$$ | ______   ______   _______$$ |   __
@@ -19,7 +20,7 @@
 (setq bedrock--initial-gc-threshold gc-cons-threshold)
 (setq gc-cons-threshold 10000000)
 (setq byte-compile-warnings '(not obsolete))
-(setq warning-suppress-log-types '((comp) (bytecomp)))
+(setq warning-suppress-log-types '((comp) (bytecomp) (native-compiler)))
 (setq native-comp-async-report-warnings-errors 'silent)
 
 ;; Silence stupid startup message

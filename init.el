@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;;;  ________                                                _______                 __                            __
 ;;; /        |                                              /       \               /  |                          /  |
 ;;; $$$$$$$$/ _____  ____   ______   _______  _______       $$$$$$$  | ______   ____$$ | ______   ______   _______$$ |   __
@@ -32,9 +33,23 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Basic settings
+;;;   Built-in customization framework
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Keep Custom's auto-generated settings (package-selected-packages and the
+;; like) out of version control -- they're machine-local, not shared config.
+;; Set this before `package' or anything else that might call
+;; `customize-save-variable' runs.
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Basic settings
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Package initialization
 ;;
@@ -222,7 +237,10 @@ If the new path's directories does not exist, create them."
   (setq solarized-use-less-bold t
         solarized-scale-org-headlines nil)
   :config
-  (load-theme 'solarized-light))          ; for dark theme, use solarized-dark
+  (load-theme 'solarized-light) ; for dark theme, use solarized-dark
+  ;; set the title bar colors to be more visible
+  (add-to-list 'default-frame-alist '(ns-appearance . light))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -269,37 +287,5 @@ If the new path's directories does not exist, create them."
 (dolist (local-extra (file-expand-wildcards
                        (expand-file-name "extras/*-local.el" user-emacs-directory)))
   (load-file local-extra))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Built-in customization framework
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("0f9a1b7a0f1d09544668297c1f04e5a5452ae1f4cf69f11b125f4cff1d54783d"
-     "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3"
-     default))
- '(package-selected-packages
-   '(ag aggressive-indent cape company-restclient corfu-terminal eat
-	embark-consult flycheck-clj-kondo forge http json-mode
-	kaocha-runner kind-icon marginalia markdown-ts-mode mmm-mode
-	mustache-mode orderless org-edit-indirect polymode
-	rainbow-delimiters ripgrep smartparens solarized-theme
-	super-save treemacs-evil treemacs-icons-dired treemacs-magit
-	treemacs-persp treemacs-projectile treemacs-tab-bar vertico
-	vterm wgrep which-key yaml-pro))
- '(reb-re-syntax 'string))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cider-error-overlay-face ((t (:extend t :foreground "OrangeRed2")))))
 
 (setq gc-cons-threshold (or bedrock--initial-gc-threshold 800000))

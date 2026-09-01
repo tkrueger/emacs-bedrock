@@ -1,4 +1,4 @@
-;; Extra config: Workarounds for broken things
+;; Extra config: Workarounds for broken things -*- lexical-binding: t; -*-
 ;;
 ;; Contents:
 ;;
