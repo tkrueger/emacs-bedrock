@@ -261,6 +261,12 @@ If the new path's directories does not exist, create them."
 ;; Things still on probation
 (load-file (expand-file-name "extras/probation.el" user-emacs-directory))
 
+;; Machine-local extras (e.g. work-only Forge/host setup): gitignored, so
+;; only load the ones that actually exist on this machine.
+(dolist (local-extra (file-expand-wildcards
+                       (expand-file-name "extras/*-local.el" user-emacs-directory)))
+  (load-file local-extra))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework
