@@ -36,6 +36,11 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Force a fixed asdf java version for Cider/nREPL, regardless of what a
+;; given project's .tool-versions pins (which may reference a version that
+;; isn't installed locally, breaking `cider-jack-in').
+(setenv "ASDF_JAVA_VERSION" "temurin-25.0.1+8.0.LTS")
+
 (use-package cider
   :ensure t)
 
