@@ -24,7 +24,19 @@
   :config
   (require 'flycheck-clj-kondo)
   (setq clojure-toplevel-inside-comment-form t)
-  (add-hook 'before-save-hook 'eglot-format-buffer))
+  (add-hook 'before-save-hook 'eglot-format-buffer)
+  ;; eglot's semantic-tokens highlighting maps clojure-lsp's LSP token types
+  ;; onto a handful of generic faces, which fights with clojure-mode's own
+  ;; (much more syntax-aware) font-lock rules for keywords, docstrings, etc.
+  ;; It only turns on once the server's `initialize' request completes
+  ;; asynchronously, so a buffer looks fine at first and is then
+  ;; re-fontified out from under you. `eglot-managed-mode-hook' runs right
+  ;; after that happens (on every connect/reconnect), so turn it back off
+  ;; there rather than trying to preempt it earlier.
+  (add-hook 'eglot-managed-mode-hook
+            (lambda ()
+              (when (derived-mode-p 'clojure-mode)
+                (eglot-semantic-tokens-mode -1)))))
 
 (use-package rainbow-delimiters
   :ensure t
