@@ -117,6 +117,15 @@
   :config
   (setq ag-highlight-search t))
 
+;; Also wgrep
+(use-package wgrep
+  :ensure t)
+
+;; And allow wgrep result buffer style editing for ag result buffers
+(use-package wgrep-ag
+  :ensure t
+  :after ag)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Minibuffer and completion
